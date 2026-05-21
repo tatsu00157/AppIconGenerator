@@ -1,4 +1,4 @@
-# App Icon Generator (MVP)
+# Pikcel（旧称: App Icon Generator）
 
 ## 概要
 単一の画像をアップロードし、複数サイズのアイコンを生成してZIP形式でダウンロードできるWebツール。
@@ -32,11 +32,18 @@
 - サイトヘッダー・フッター（ホワイト。ヘッダー下部にピンクボーダー + コピーライト表示）
 - ヘッダー直下に3ステップの使い方ガイド（カード形式）
 - メインカラー：ピンク（`#E8185C`）
+- favicon（SVG形式・Pレターマーク）
+- SEO meta タグ・OGP・Twitter Card・構造化データ（JSON-LD）設定済み
 
 ### ❌ 未実装（拡張予定）
 - 角丸処理
 - 背景色追加
 - サーバー導入後：背景透過（機械学習）・高画質処理・バッチ処理
+
+### 🔧 デプロイ後に対応が必要なもの
+- `og:url` / `canonical` の URL を実際のドメインに更新（`index.html` 内の `pikcel.example.com` を差し替え）
+- OG画像を作成してホスティング（推奨サイズ：1200×630px。サービス名・説明文・Pアイコンを組み合わせた横長バナー）
+- `og:image` / `twitter:image` を実際の OG画像 URL に更新
 
 ---
 
@@ -52,6 +59,7 @@
   ├── index.html
   ├── style.css
   ├── main.js
+  ├── favicon.svg
   ├── /libs
   │     ├── jszip.min.js
   │     └── FileSaver.min.js

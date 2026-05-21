@@ -3,7 +3,57 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>App Icon Generator</title>
+  <title>Pikcel - アプリアイコン一括生成ツール</title>
+
+  <!-- SEO -->
+  <meta name="description" content="Pikcel はアプリアイコンを一括生成できる無料ツールです。1024×1024pxの画像をアップロードするだけで、iOS・Android・Unity向けの27サイズをまとめてZIPでダウンロードできます。登録不要・完全ブラウザ処理。" />
+  <meta name="keywords" content="アプリアイコン,アイコン生成,iOS,Android,Unity,ファビコン,icon generator,Pikcel" />
+  <meta name="robots" content="index, follow" />
+  <meta name="author" content="Pikcel" />
+  <meta name="theme-color" content="#E8185C" />
+
+  <!-- OGP -->
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Pikcel" />
+  <meta property="og:title" content="Pikcel - アプリアイコン一括生成ツール" />
+  <meta property="og:description" content="1024×1024pxの画像から iOS・Android・Unity向けの27サイズを一括生成。無料・登録不要・完全ブラウザ処理。" />
+  <meta property="og:locale" content="ja_JP" />
+  <meta property="og:url" content="https://pikcel.example.com" /> <!-- デプロイ後に更新 -->
+  <meta property="og:image" content="https://pikcel.example.com/og-image.png" /> <!-- デプロイ後に更新 -->
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Pikcel - アプリアイコン一括生成ツール" />
+  <meta name="twitter:description" content="1024×1024pxの画像から iOS・Android・Unity向けの27サイズを一括生成。無料・登録不要・完全ブラウザ処理。" />
+  <meta name="twitter:image" content="https://pikcel.example.com/og-image.png" /> <!-- デプロイ後に更新 -->
+
+  <!-- Canonical -->
+  <link rel="canonical" href="https://pikcel.example.com" /> <!-- デプロイ後に更新 -->
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+  <link rel="apple-touch-icon" href="favicon.svg" />
+
+  <!-- 構造化データ -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Pikcel",
+    "description": "iOS・Android・Unity向けのアプリアイコンを一括生成できる無料ツール。1024×1024pxの画像から27サイズをZIPでダウンロード。",
+    "url": "https://pikcel.example.com",
+    "applicationCategory": "DesignApplication",
+    "operatingSystem": "Web",
+    "inLanguage": "ja",
+    "isAccessibleForFree": true,
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "JPY"
+    }
+  }
+  </script>
+
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
@@ -12,12 +62,9 @@
       <div class="site-header-brand">
         <svg class="site-header-icon" xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 28 28" fill="none">
           <rect width="28" height="28" rx="7" fill="#E8185C"/>
-          <rect x="6" y="6" width="7" height="7" rx="2" fill="white" opacity="0.9"/>
-          <rect x="15" y="6" width="7" height="7" rx="2" fill="white" opacity="0.6"/>
-          <rect x="6" y="15" width="7" height="7" rx="2" fill="white" opacity="0.6"/>
-          <rect x="15" y="15" width="7" height="7" rx="2" fill="white" opacity="0.3"/>
+          <path d="M8 22V6h6a4 4 0 0 1 0 8H8" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
         </svg>
-        <span class="site-header-title">App Icon Generator</span>
+        <span class="site-header-title">Pikcel</span>
       </div>
       <p class="site-header-tagline">iOS / Android / Unity 向けのアイコンを一括生成</p>
     </div>
@@ -132,7 +179,7 @@
   <footer class="site-footer">
     <div class="site-footer-inner">
       <p class="site-footer-privacy">画像はブラウザ内で処理され、サーバーには送信されません。</p>
-      <p class="site-footer-copy">&copy; 2026 App Icon Generator. All rights reserved.</p>
+      <p class="site-footer-copy">&copy; 2026 Pikcel. All rights reserved.</p>
     </div>
   </footer>
 
