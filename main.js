@@ -1,4 +1,4 @@
-const ALL_SIZES = [1024, 512, 256, 192, 180, 167, 152, 144, 128, 120, 114, 100, 96, 87, 80, 76, 72, 60, 58, 57, 50, 48, 40, 29, 20];
+const ALL_SIZES = [1024, 512, 256, 192, 180, 167, 152, 144, 128, 120, 114, 100, 96, 87, 80, 76, 72, 60, 58, 57, 50, 48, 40, 32, 29, 20, 16];
 
 const uploadArea      = document.getElementById('uploadArea');
 const fileInput       = document.getElementById('fileInput');
@@ -7,6 +7,7 @@ const uploadPreview   = document.getElementById('uploadPreview');
 const previewImg           = document.getElementById('previewImg');
 const previewThumbPlaceholder = document.getElementById('previewThumbPlaceholder');
 const previewInfo     = document.getElementById('previewInfo');
+const filenameInput   = document.getElementById('filenameInput');
 const generateBtn     = document.getElementById('generateBtn');
 const progressWrap    = document.getElementById('progressWrap');
 const progressFill    = document.getElementById('progressFill');
@@ -43,7 +44,7 @@ function handleFile(file) {
   hideError();
 
   if (!file.type.startsWith('image/')) {
-    showError('PNG または JPG 画像を選択してください。');
+    showError('画像ファイルを選択してください。');
     return;
   }
 
@@ -51,14 +52,19 @@ function handleFile(file) {
   const img = new Image();
 
   img.onload = () => {
+    if (img.naturalWidth !== 1024 || img.naturalHeight !== 1024) {
+      showError(`画像サイズが正しくありません（${img.naturalWidth}×${img.naturalHeight}px）。1024×1024px の画像を使用してください。`);
+      URL.revokeObjectURL(url);
+      return;
+    }
     loadedImage = img;
 
     previewImg.src = url;
     previewImg.style.display = 'block';
     previewThumbPlaceholder.style.display = 'none';
     previewInfo.innerHTML =
-      `<p class="preview-filename">${file.name}</p>` +
-      `<p class="preview-meta">` +
+      `<div class="preview-filename">${file.name}</div>` +
+      `<div class="preview-meta">` +
         `<span class="meta-item">` +
           `<svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>` +
           `${img.naturalWidth} × ${img.naturalHeight} px` +
@@ -67,7 +73,7 @@ function handleFile(file) {
           `<svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>` +
           `${(file.size / 1024).toFixed(0)} KB` +
         `</span>` +
-      `</p>`;
+      `</div>`;
 
     uploadPlaceholder.hidden = true;
     uploadPreview.hidden = false;
@@ -107,7 +113,8 @@ generateBtn.addEventListener('click', async () => {
     const zipBlob = await zip.generateAsync({ type: 'blob' });
 
     setProgress(100, '完了！');
-    saveAs(zipBlob, 'app-icons.zip');
+    const filename = (filenameInput.value.trim() || 'app-icons') + '.zip';
+    saveAs(zipBlob, filename);
   } catch (err) {
     showError('生成中にエラーが発生しました: ' + err.message);
   } finally {

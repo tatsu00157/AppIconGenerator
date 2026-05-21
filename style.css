@@ -4,15 +4,20 @@
   padding: 0;
 }
 
+[hidden] {
+  display: none !important;
+}
+
 :root {
   --bg: #f5f5f7;
   --surface: #ffffff;
   --border: #d1d1d6;
   --text: #1d1d1f;
   --text-sub: #6e6e73;
-  --accent: #0071e3;
-  --accent-hover: #0077ed;
-  --accent-active: #006edb;
+  --accent: #E8185C;
+  --accent-hover: #D4155A;
+  --accent-active: #BE1250;
+  --accent-light: #fff0f5;
   --danger: #ff3b30;
   --radius: 14px;
   --shadow: 0 2px 12px rgba(0,0,0,.08);
@@ -23,30 +28,82 @@ body {
   background: var(--bg);
   color: var(--text);
   min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Site Header */
+.site-header {
+  background: #1a1a1a;
+  border-bottom: 1px solid #2e2e2e;
+}
+
+.site-header-inner {
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 16px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.site-header-brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-shrink: 0;
+}
+
+.site-header-icon {
+  display: block;
+}
+
+.site-header-title {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #ffffff;
+  letter-spacing: -0.2px;
+}
+
+.site-header-tagline {
+  font-size: 0.78rem;
+  color: #888893;
+  text-align: right;
+}
+
+/* Site Footer */
+.site-footer {
+  background: #1a1a1a;
+  border-top: 1px solid #2e2e2e;
+  margin-top: auto;
+}
+
+.site-footer-inner {
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 20px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+}
+
+.site-footer-privacy {
+  font-size: 0.78rem;
+  color: #888893;
+}
+
+.site-footer-copy {
+  font-size: 0.75rem;
+  color: #555560;
 }
 
 .container {
   max-width: 680px;
   margin: 0 auto;
-  padding: 40px 20px 60px;
-}
-
-/* Header */
-header {
-  text-align: center;
-  margin-bottom: 36px;
-}
-
-header h1 {
-  font-size: 2rem;
-  font-weight: 700;
-  letter-spacing: -0.5px;
-}
-
-.subtitle {
-  margin-top: 6px;
-  color: var(--text-sub);
-  font-size: 0.95rem;
+  padding: 36px 20px 48px;
+  flex: 1;
 }
 
 /* Card */
@@ -83,7 +140,7 @@ header h1 {
 .upload-area:hover,
 .upload-area.drag-over {
   border-color: var(--accent);
-  background: #f0f6ff;
+  background: var(--accent-light);
 }
 
 .upload-placeholder {
@@ -115,6 +172,7 @@ header h1 {
   padding: 20px;
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 20px;
 }
 
@@ -151,6 +209,7 @@ header h1 {
   flex-direction: column;
   gap: 6px;
   min-width: 0;
+  overflow: hidden;
 }
 
 .preview-filename {
@@ -164,8 +223,10 @@ header h1 {
 
 .preview-meta {
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   gap: 12px;
+  margin: 0;
+  overflow: hidden;
 }
 
 .meta-item {
@@ -174,6 +235,7 @@ header h1 {
   gap: 4px;
   font-size: 0.82rem;
   color: var(--text-sub);
+  white-space: nowrap;
 }
 
 .meta-item svg {
@@ -203,6 +265,40 @@ header h1 {
 .sizes-note {
   font-size: 0.8rem;
   color: var(--text-sub);
+}
+
+/* Filename input */
+.filename-wrap {
+  display: flex;
+  align-items: center;
+  border: 1.5px solid var(--border);
+  border-radius: 10px;
+  overflow: hidden;
+  margin-bottom: 12px;
+  transition: border-color 0.2s;
+}
+
+.filename-wrap:focus-within {
+  border-color: var(--accent);
+}
+
+.filename-input {
+  flex: 1;
+  border: none;
+  outline: none;
+  padding: 11px 14px;
+  font-size: 0.95rem;
+  color: var(--text);
+  background: var(--surface);
+  font-family: inherit;
+}
+
+.filename-ext {
+  padding: 11px 14px 11px 0;
+  font-size: 0.95rem;
+  color: var(--text-sub);
+  background: var(--surface);
+  user-select: none;
 }
 
 /* Button */
@@ -268,30 +364,24 @@ header h1 {
   font-size: 0.88rem;
 }
 
-/* Footer */
-footer {
-  text-align: center;
-  margin-top: 32px;
-  font-size: 0.8rem;
-  color: var(--text-sub);
-}
-
 /* Responsive */
 @media (max-width: 480px) {
   .container {
-    padding: 24px 16px 48px;
+    padding: 24px 16px 40px;
   }
 
-  header h1 {
-    font-size: 1.5rem;
+  .site-header-inner {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+  }
+
+  .site-header-tagline {
+    text-align: left;
   }
 
   .upload-preview {
     flex-direction: column;
     text-align: center;
-  }
-
-  .platform-sizes {
-    display: none;
   }
 }
