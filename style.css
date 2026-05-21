@@ -34,8 +34,9 @@ body {
 
 /* Site Header */
 .site-header {
-  background: #1a1a1a;
-  border-bottom: 1px solid #2e2e2e;
+  background: #ffffff;
+  border-bottom: 3px solid var(--accent);
+  box-shadow: 0 1px 8px rgba(0,0,0,.06);
 }
 
 .site-header-inner {
@@ -62,20 +63,21 @@ body {
 .site-header-title {
   font-size: 1rem;
   font-weight: 700;
-  color: #ffffff;
+  color: var(--text);
   letter-spacing: -0.2px;
+  white-space: nowrap;
 }
 
 .site-header-tagline {
   font-size: 0.78rem;
-  color: #888893;
+  color: var(--text-sub);
   text-align: right;
 }
 
 /* Site Footer */
 .site-footer {
-  background: #1a1a1a;
-  border-top: 1px solid #2e2e2e;
+  background: #ffffff;
+  border-top: 1px solid var(--border);
   margin-top: auto;
 }
 
@@ -91,12 +93,12 @@ body {
 
 .site-footer-privacy {
   font-size: 0.78rem;
-  color: #888893;
+  color: var(--text-sub);
 }
 
 .site-footer-copy {
   font-size: 0.75rem;
-  color: #555560;
+  color: var(--text-sub);
 }
 
 .container {
@@ -104,6 +106,53 @@ body {
   margin: 0 auto;
   padding: 36px 20px 48px;
   flex: 1;
+}
+
+/* How to */
+.how-to {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr auto 1fr;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 28px;
+  background: var(--surface);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 20px 24px;
+}
+
+.how-to-step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  text-align: center;
+}
+
+.how-to-num {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: var(--accent);
+  color: #fff;
+  font-size: 0.78rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.how-to-step p {
+  font-size: 0.8rem;
+  color: var(--text-sub);
+  line-height: 1.4;
+}
+
+.how-to-arrow {
+  color: var(--border);
+  font-size: 1rem;
+  text-align: center;
 }
 
 /* Card */
