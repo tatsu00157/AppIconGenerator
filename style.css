@@ -54,6 +54,27 @@ body {
   align-items: center;
   gap: 10px;
   flex-shrink: 0;
+  text-decoration: none;
+}
+
+.site-header-nav {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.site-header-nav-link {
+  font-size: 0.85rem;
+  color: var(--text-sub);
+  text-decoration: none;
+  padding: 6px 10px;
+  border-radius: 6px;
+  transition: background 0.15s, color 0.15s;
+}
+
+.site-header-nav-link:hover {
+  background: var(--bg);
+  color: var(--text);
 }
 
 .site-header-icon {
@@ -94,6 +115,22 @@ body {
 .site-footer-privacy {
   font-size: 0.78rem;
   color: var(--text-sub);
+}
+
+.site-footer-links {
+  display: flex;
+  gap: 20px;
+}
+
+.site-footer-links a {
+  font-size: 0.78rem;
+  color: var(--accent);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.site-footer-links a:hover {
+  color: var(--accent-hover);
 }
 
 .site-footer-copy {
