@@ -41,13 +41,10 @@
 - フッター：プライバシーポリシー・お問い合わせをリンク表示（ピンク・下線）
 - お問い合わせ：mailto にメール本文のテンプレート設定済み（件名保持の注記含む）
 
-### ❌ 未実装（拡張予定）
-- 角丸処理
-- 背景色追加
-- サーバー導入後：背景透過（機械学習）・高画質処理・バッチ処理
+### ❌ 未実装（フェーズ2：サーバー導入後）
+- 背景透過（機械学習）・高画質処理・バッチ処理
 
-### 🔧 デプロイ後に対応が必要なもの
-- `og:url` / `canonical` の URL を実際のドメインに更新（`index.html` 内の `pikcel.example.com` を差し替え）
+### 🔧 残対応
 - OG画像を作成してホスティング（推奨サイズ：1200×630px。サービス名・説明文・Pアイコンを組み合わせた横長バナー）
 - `og:image` / `twitter:image` を実際の OG画像 URL に更新
 
@@ -116,10 +113,34 @@ icon_20.png
 
 ---
 
-## デプロイ方針
-- フェーズ1：GitHub Pages（現状の静的ツール）
-- フェーズ2：VPS に移行（サーバー機能追加時・Webサーバー構築済み）
-- 独自ドメインを最初から設定することでURL変更なしに移行可能
+## デプロイ
+
+### 構成
+- VPS（Rocky Linux / Apache）で公開済み
+- URL：https://pikcel.karineffort.com/
+- ドキュメントルート：`/var/www/pikcel`
+- Apache設定：`/etc/httpd/conf.d/pikcel.conf`（HTTP→HTTPSリダイレクト）+ `pikcel-le-ssl.conf`（SSL・certbot生成）
+
+### 自動デプロイ（git bare repo + post-receive）
+VPS の `~/repos/pikcel.git` にベアリポジトリを設置。ローカルからpushするとpost-receiveフックが `/var/www/pikcel` に自動展開する。
+
+**ローカルのリモート設定**
+```
+origin  → https://github.com/tatsu00157/AppIconGenerator.git
+vps     → ユーザー名@133.117.73.175:repos/pikcel.git
+```
+
+**デプロイコマンド**
+```bash
+git push vps main
+```
+
+**フック（VPS: `~/repos/pikcel.git/hooks/post-receive`）**
+```bash
+#!/bin/bash
+unset GIT_DIR
+git --work-tree=/var/www/pikcel --git-dir=$HOME/repos/pikcel.git checkout main -f
+```
 
 ---
 
