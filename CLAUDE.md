@@ -46,7 +46,7 @@
 
 ### 🔧 残対応
 - OG画像を作成してホスティング（推奨サイズ：1200×630px。サービス名・説明文・Pアイコンを組み合わせた横長バナー）
-- `og:image` / `twitter:image` を実際の OG画像 URL に更新
+- `og:image` / `twitter:image` を実際の OG画像 URL に更新（現在は `https://pikcel.karineffort.com/og-image.png` のプレースホルダー）
 
 ---
 
