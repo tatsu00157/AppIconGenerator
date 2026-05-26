@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://pikcel.example.com/sitemap.xml <!-- デプロイ後に更新 -->
+Sitemap: https://pikcel.karineffort.com/sitemap.xml <!-- デプロイ後に更新 -->
